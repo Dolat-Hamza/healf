@@ -21,7 +21,7 @@ function parsePriceRange(priceRangeStr: string): { min: number; max: number } {
       min: parseFloat(minPrice),
       max: parseFloat(maxPrice)
     };
-  } catch (error) {
+  } catch  {
     const priceMatch = priceRangeStr.match(/\$?(\d+(?:\.\d{2})?)/g);
     if (priceMatch && priceMatch.length > 0) {
       const prices = priceMatch.map(p => parseFloat(p.replace('$', '')));
