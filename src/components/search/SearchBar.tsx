@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import {AutoComplete} from 'antd';
-import {MagnifyingGlassIcon, XMarkIcon} from '@heroicons/react/24/outline';
+import {XMarkIcon} from '@heroicons/react/24/outline';
 
 interface AutocompleteSuggestion {
     value: string;
