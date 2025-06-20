@@ -1,0 +1,252 @@
+@import "tailwindcss";
+
+/* Custom Design System */
+@layer base {
+  :root {
+    /* Font Variables */
+    --font-inter: var(--font-inter);
+    --font-poppins: var(--font-poppins);
+    
+    /* Color Design Tokens - Improved Contrast */
+    --color-primary: #2563eb;
+    --color-primary-hover: #1d4ed8;
+    --color-primary-light: #dbeafe;
+    --color-secondary: #374151; /* Darker for better readability - was #64748b */
+    --color-secondary-hover: #1f2937; /* Much darker - was #475569 */
+    --color-accent: #f59e0b;
+    --color-accent-hover: #d97706;
+    
+    /* Text Color Tokens for Better Contrast */
+    --text-primary: #111827;
+    --text-secondary: #374151; /* Darker than before for better readability */
+    --text-muted: #6b7280; /* Still readable but lighter for less important text */
+    --text-light: #9ca3af; /* Only for very subtle text */
+    
+    /* Semantic Colors */
+    --color-success: #10b981;
+    --color-success-light: #d1fae5;
+    --color-warning: #f59e0b;
+    --color-warning-light: #fef3c7;
+    --color-error: #ef4444;
+    --color-error-light: #fee2e2;
+    --color-info: #3b82f6;
+    --color-info-light: #dbeafe;
+    
+    /* Animation Durations */
+    --duration-fast: 150ms;
+    --duration-normal: 200ms;
+    --duration-slow: 300ms;
+    --duration-slower: 500ms;
+    
+    /* Animation Easings */
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  /* Base Typography with Improved Contrast */
+  body {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    line-height: 1.6;
+    color: #1f2937; /* Darker for better contrast - was #374151 */
+    background-color: #f9fafb;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #111827;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Focus styles */
+  *:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  
+  /* Selection styles */
+  ::selection {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+}
+
+@layer components {
+  /* Button Components */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    transition: all var(--duration-normal) var(--ease-in-out);
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+    transition: all var(--duration-normal) var(--ease-in-out);
+  }
+  
+  /* Card Components */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden;
+    transition: all var(--duration-normal) var(--ease-in-out);
+  }
+  
+  .card-hover {
+    @apply hover:shadow-md hover:shadow-blue-100/50 hover:border-blue-200 hover:-translate-y-0.5;
+  }
+  
+  .card-interactive {
+    @apply cursor-pointer hover:shadow-lg hover:shadow-blue-100/50 hover:border-blue-200 hover:scale-[1.02];
+    transition: all var(--duration-slow) var(--ease-in-out);
+  }
+  
+  /* Input Components */
+  .input-field {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 disabled:text-gray-500;
+    transition: all var(--duration-normal) var(--ease-in-out);
+  }
+  
+  .input-field:hover:not(:disabled) {
+    @apply border-gray-400;
+  }
+  
+  /* Status Indicators */
+  .status-success {
+    @apply bg-green-100 text-green-800 border-green-200;
+  }
+  
+  .status-warning {
+    @apply bg-yellow-100 text-yellow-800 border-yellow-200;
+  }
+  
+  .status-error {
+    @apply bg-red-100 text-red-800 border-red-200;
+  }
+  
+  .status-info {
+    @apply bg-blue-100 text-blue-800 border-blue-200;
+  }
+}
+
+@layer utilities {
+  /* Font Utilities */
+  .font-inter {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  }
+  
+  .font-poppins {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  }
+  
+  /* Animation Utilities */
+  .animate-fade-in {
+    animation: fadeIn var(--duration-slow) var(--ease-out);
+  }
+  
+  .animate-slide-up {
+    animation: slideUp var(--duration-slow) var(--ease-out);
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn var(--duration-normal) var(--ease-bounce);
+  }
+  
+  /* Transition Utilities */
+  .transition-smooth {
+    transition: all var(--duration-normal) var(--ease-in-out);
+  }
+  
+  .transition-fast {
+    transition: all var(--duration-fast) var(--ease-in-out);
+  }
+  
+  .transition-slow {
+    transition: all var(--duration-slow) var(--ease-in-out);
+  }
+  
+  /* Interactive Utilities */
+  .hover-lift {
+    transition: transform var(--duration-normal) var(--ease-in-out);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+  
+  .hover-scale {
+    transition: transform var(--duration-normal) var(--ease-in-out);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Focus Utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+  }
+  
+  .focus-ring-inset {
+    @apply focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design Enhancements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Dark Mode Support (Future Enhancement) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-50: #1f2937;
+    --color-gray-100: #374151;
+    --color-gray-800: #f9fafb;
+    --color-gray-900: #ffffff;
+  }
+}
+
+
