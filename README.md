@@ -946,10 +946,6 @@ This architecture provides a solid foundation for a product search platform whil
 - Multi-language support
 - Progressive Web App features
 
-## 📄 License
 
-This project is provided as-is for educational and commercial use.
-
----
 
 **Built with ❤️ using Next.js, TypeScript, and Tailwind CSS**
